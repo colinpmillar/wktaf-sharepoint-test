@@ -7,7 +7,6 @@
 #' @tafAccess Restricted
 #' @tafSource script
 
-library(icesTAF)
 taf.library(icesSharePoint)
 
 # target folder:
@@ -22,7 +21,7 @@ filenames <-
 
 for (filename in filenames) {
   spgetfile(
-    file.path("2020 Meeting Documents/06. Data/FIDES", file),
+    file.path("2020 Meeting Documents/06. Data/FIDES", filename),
     "/ExpertGroups/WGMIXFISH-ADVICE",
     "https://community.ices.dk",
     destdir = "."
