@@ -1,15 +1,19 @@
-## setting your ICES username and password
+## setting your ICES username and password for icesSharePoint
+
+TODO: inlcude information on setting options in .Rprofile file.
 
 ```r
 # set ices username
-
 options(icesSharePoint.username = "colin")
+options("icesSharePoint.username")
+
+
 
 # first call to anything will ask for a password,
 # there after it will be stored in a secrets store that only you
 # have access to.  however be carefull because if someone gains
 # access to your computer your password will be accessible via:
-keyring::key_get("icesSharePoint", "colin")
+keyring::key_get("icesSharePoint", "colin") # beware!! this will print your password to the screen
 
 # you need to be logged into your machine as you to read this, but
 # if someone somehow wrote a dodgy script, they could programatically
@@ -27,10 +31,24 @@ options(icesSharePoint.site = "/ExpertGroups/WGMIXFISH-ADVICE")
 
 # find the directory we want to access
 spdir()
-spdir("2020 Meeting Docs/06. Data/VME Data")
+spdir("2020 Meeting Documents/06. Data/FIDES")
 
 fnames <- spfiles(data_dir, full = TRUE)
 for (fname in fnames) {
   spgetfile(fname, destdir = ".")
 }
+```
+
+
+## setting your ICES username and password for icesConnect
+
+```r
+remotes::install_github("ices-tools-prod/icesConnect")
+
+library(icesConnect)
+
+set_username("colin")
+
+(ices_token())
+
 ```
